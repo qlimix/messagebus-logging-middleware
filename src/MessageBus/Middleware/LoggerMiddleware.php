@@ -3,7 +3,6 @@
 namespace Qlimix\MessageBus\MessageBus\Middleware;
 
 use Qlimix\MessageBus\Logger\MessageLoggerInterface;
-use Qlimix\MessageBus\Message\MessageInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 
 final class LoggerMiddleware implements MiddlewareInterface
@@ -22,7 +21,7 @@ final class LoggerMiddleware implements MiddlewareInterface
     /**
      * @inheritDoc
      */
-    public function handle(MessageInterface $message, MiddlewareHandlerInterface $handler): void
+    public function handle($message, MiddlewareHandlerInterface $handler): void
     {
         $this->logger->start($message);
 

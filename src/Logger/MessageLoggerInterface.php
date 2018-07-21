@@ -2,29 +2,29 @@
 
 namespace Qlimix\MessageBus\Logger;
 
-use Qlimix\MessageBus\Message\MessageInterface;
+use Qlimix\Serializable\SerializableInterface;
 
 interface MessageLoggerInterface
 {
     /**
-     * @param MessageInterface $message
+     * @param SerializableInterface $message
      */
-    public function start(MessageInterface $message): void;
+    public function start(SerializableInterface $message): void;
 
     /**
-     * @param MessageInterface $message
+     * @param SerializableInterface $message
      */
-    public function success(MessageInterface $message): void;
+    public function success(SerializableInterface $message): void;
 
     /**
-     * @param MessageInterface $message
+     * @param SerializableInterface $message
      * @param \Throwable $exception
      */
-    public function failed(MessageInterface $message, \Throwable $exception): void;
+    public function failed(SerializableInterface $message, \Throwable $exception): void;
 
     /**
-     * @param MessageInterface $message
+     * @param SerializableInterface $message
      * @param \Throwable $exception
      */
-    public function critical(MessageInterface $message, \Throwable $exception): void;
+    public function critical(SerializableInterface $message, \Throwable $exception): void;
 }

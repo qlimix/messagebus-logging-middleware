@@ -5,7 +5,7 @@ namespace Qlimix\MessageBus\Logger;
 use Qlimix\Log\Handler\Channel;
 use Qlimix\Log\Handler\Level;
 use Qlimix\Log\Handler\LogHandlerInterface;
-use Qlimix\MessageBus\Message\MessageInterface;
+use Qlimix\Serializable\SerializableInterface;
 
 final class MessageLogger implements MessageLoggerInterface
 {
@@ -25,7 +25,7 @@ final class MessageLogger implements MessageLoggerInterface
     /**
      * @inheritDoc
      */
-    public function start(MessageInterface $message): void
+    public function start(SerializableInterface $message): void
     {
         try {
             $context = [
@@ -47,7 +47,7 @@ final class MessageLogger implements MessageLoggerInterface
     /**
      * @inheritDoc
      */
-    public function success(MessageInterface $message): void
+    public function success(SerializableInterface $message): void
     {
         try {
             $context = [
@@ -69,7 +69,7 @@ final class MessageLogger implements MessageLoggerInterface
     /**
      * @inheritDoc
      */
-    public function failed(MessageInterface $message, \Throwable $exception): void
+    public function failed(SerializableInterface $message, \Throwable $exception): void
     {
         try {
             $context = [
@@ -91,7 +91,7 @@ final class MessageLogger implements MessageLoggerInterface
     /**
      * @inheritDoc
      */
-    public function critical(MessageInterface $message, \Throwable $exception): void
+    public function critical(SerializableInterface $message, \Throwable $exception): void
     {
         try {
             $context = [
