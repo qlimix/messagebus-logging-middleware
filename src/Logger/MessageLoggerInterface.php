@@ -2,7 +2,7 @@
 
 namespace Qlimix\MessageBus\Logger;
 
-use Qlimix\Serializable\SerializableInterface;
+use Qlimix\Serialize\SerializableInterface;
 
 interface MessageLoggerInterface
 {

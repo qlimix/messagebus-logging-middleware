@@ -5,7 +5,7 @@ namespace Qlimix\MessageBus\Logger;
 use Qlimix\Log\Handler\Channel;
 use Qlimix\Log\Handler\Level;
 use Qlimix\Log\Handler\LogHandlerInterface;
-use Qlimix\Serializable\SerializableInterface;
+use Qlimix\Serialize\SerializableInterface;
 
 final class MessageLogger implements MessageLoggerInterface
 {
