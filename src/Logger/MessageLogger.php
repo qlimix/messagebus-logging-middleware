@@ -5,7 +5,9 @@ namespace Qlimix\MessageBus\Logger;
 use Qlimix\Log\Handler\Channel;
 use Qlimix\Log\Handler\Level;
 use Qlimix\Log\Handler\LogHandlerInterface;
-use Qlimix\Serialize\SerializableInterface;
+use Qlimix\Serializable\SerializableInterface;
+use Throwable;
+use function get_class;
 
 final class MessageLogger implements MessageLoggerInterface
 {
@@ -14,9 +16,6 @@ final class MessageLogger implements MessageLoggerInterface
     /** @var LogHandlerInterface */
     private $logHandler;
 
-    /**
-     * @param LogHandlerInterface $logHandler
-     */
     public function __construct(LogHandlerInterface $logHandler)
     {
         $this->logHandler = $logHandler;
@@ -30,7 +29,7 @@ final class MessageLogger implements MessageLoggerInterface
         try {
             $context = [
                 'type' => 'start',
-                'object' => \get_class($message),
+                'object' => get_class($message),
                 'message' => $message->serialize()
             ];
 
@@ -40,7 +39,7 @@ final class MessageLogger implements MessageLoggerInterface
                 'Triggered message '.$message->getName(),
                 $context
             );
-        } catch (\Exception $exception) {
+        } catch (Throwable $exception) {
         }
     }
 
@@ -62,7 +61,7 @@ final class MessageLogger implements MessageLoggerInterface
                 'Successfully processed message '.$message->getName(),
                 $context
             );
-        } catch (\Exception $exception) {
+        } catch (Throwable $exception) {
         }
     }
 
@@ -84,7 +83,7 @@ final class MessageLogger implements MessageLoggerInterface
                 'Failed message '.$message->getName(),
                 $context
             );
-        } catch (\Exception $exception) {
+        } catch (Throwable $exception) {
         }
     }
 
@@ -106,7 +105,7 @@ final class MessageLogger implements MessageLoggerInterface
                 'Critically failed message '.$message->getName(),
                 $context
             );
-        } catch (\Exception $exception) {
+        } catch (Throwable $exception) {
         }
     }
 }
