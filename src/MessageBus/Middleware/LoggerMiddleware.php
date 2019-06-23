@@ -2,7 +2,7 @@
 
 namespace Qlimix\MessageBus\MessageBus\Middleware;
 
-use Qlimix\MessageBus\Logger\MessageLoggerInterface;
+use Qlimix\Logging\Logger\Message\MessageLoggerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 use Throwable;
 
