@@ -7,7 +7,7 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Qlimix\Logging\Logger\Message\MessageLoggerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
-use Qlimix\MessageBus\MessageBus\Middleware\LoggerMiddleware;
+use Qlimix\MessageBus\MessageBus\Middleware\MessageLoggerMiddleware;
 use Qlimix\MessageBus\MessageBus\Middleware\MiddlewareHandlerInterface;
 use Qlimix\Serializable\SerializableInterface;
 
@@ -22,13 +22,13 @@ final class LoggerMiddlewareTest extends TestCase
     /** @var MockObject */
     private $handler;
 
-    /** @var LoggerMiddleware */
+    /** @var MessageLoggerMiddleware */
     private $loggerMiddleware;
 
     protected function setUp(): void
     {
         $this->logHandler = $this->createMock(MessageLoggerInterface::class);
-        $this->loggerMiddleware = new LoggerMiddleware($this->logHandler);
+        $this->loggerMiddleware = new MessageLoggerMiddleware($this->logHandler);
 
         $this->message = $this->createMock(SerializableInterface::class);
         $this->handler = $this->createMock(MiddlewareHandlerInterface::class);

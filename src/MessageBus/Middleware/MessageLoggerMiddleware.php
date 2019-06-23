@@ -6,7 +6,7 @@ use Qlimix\Logging\Logger\Message\MessageLoggerInterface;
 use Qlimix\MessageBus\MessageBus\Middleware\Exception\MiddlewareException;
 use Throwable;
 
-final class LoggerMiddleware implements MiddlewareInterface
+final class MessageLoggerMiddleware implements MiddlewareInterface
 {
     /** @var MessageLoggerInterface */
     private $logger;
