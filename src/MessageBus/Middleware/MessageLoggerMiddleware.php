@@ -8,8 +8,7 @@ use Throwable;
 
 final class MessageLoggerMiddleware implements MiddlewareInterface
 {
-    /** @var MessageLoggerInterface */
-    private $logger;
+    private MessageLoggerInterface $logger;
 
     public function __construct(MessageLoggerInterface $logger)
     {
@@ -29,6 +28,7 @@ final class MessageLoggerMiddleware implements MiddlewareInterface
             throw $exception;
         } catch (Throwable $exception) {
             $this->logger->failed($message, $exception);
+
             throw $exception;
         }
 
