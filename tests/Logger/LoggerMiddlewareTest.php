@@ -13,17 +13,13 @@ use Qlimix\Serializable\SerializableInterface;
 
 final class LoggerMiddlewareTest extends TestCase
 {
-    /** @var MockObject */
-    private $logHandler;
+    private MockObject $logHandler;
 
-    /** @var MockObject */
-    private $message;
+    private MockObject $message;
 
-    /** @var MockObject */
-    private $handler;
+    private MockObject$handler;
 
-    /** @var MessageLoggerMiddleware */
-    private $loggerMiddleware;
+    private MessageLoggerMiddleware $loggerMiddleware;
 
     protected function setUp(): void
     {
@@ -34,10 +30,7 @@ final class LoggerMiddlewareTest extends TestCase
         $this->handler = $this->createMock(MiddlewareHandlerInterface::class);
     }
 
-    /**
-     * @test
-     */
-    public function shouldLogStartAndSuccessOnHandled(): void
+    public function testShouldLogStartAndSuccessOnHandled(): void
     {
         $this->logHandler->expects($this->once())
             ->method('start');
@@ -51,10 +44,7 @@ final class LoggerMiddlewareTest extends TestCase
         $this->loggerMiddleware->handle($this->message, $this->handler);
     }
 
-    /**
-     * @test
-     */
-    public function shouldLogStartAndFailedOnHandleFailure(): void
+    public function testShouldLogStartAndFailedOnHandleFailure(): void
     {
         $this->logHandler->expects($this->once())
             ->method('start');
@@ -71,10 +61,7 @@ final class LoggerMiddlewareTest extends TestCase
         $this->loggerMiddleware->handle($this->message, $this->handler);
     }
 
-    /**
-     * @test
-     */
-    public function shouldRethrowOnMiddlewareException(): void
+    public function testShouldRethrowOnMiddlewareException(): void
     {
         $this->logHandler->expects($this->once())
             ->method('start');
